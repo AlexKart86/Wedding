@@ -11,13 +11,15 @@ uses
   fEditBirth in 'fEditBirth.pas' {frmEditBirth},
   dataReports in 'dataReports.pas' {dmReports: TDataModule},
   fCancelWedding in 'fCancelWedding.pas' {frmCancelWedding},
-  fModalFormEditor in 'fModalFormEditor.pas' {frmModalFormEditor};
+  fModalFormEditor in 'fModalFormEditor.pas' {frmModalFormEditor},
+  fWeddingSchedule in 'fWeddingSchedule.pas' {frmWeddingSchedule};
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.CreateForm(TdmMain, dmMain);
+
   Application.MainFormOnTaskbar := True;
   if TfrmLogin.Login then
   begin

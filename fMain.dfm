@@ -3134,6 +3134,15 @@ object frmMain: TfrmMain
         Caption = #1056#1072#1089#1090#1086#1088#1078#1077#1085#1080#1077' '#1073#1088#1072#1082#1072
         GroupIndex = 2
       end
+      object RibbonGroup8: TRibbonGroup
+        Left = 509
+        Top = 3
+        Width = 100
+        Height = 86
+        ActionManager = amMain
+        Caption = #1056#1072#1089#1087#1080#1089#1072#1085#1080#1077
+        GroupIndex = 3
+      end
     end
   end
   object amMain: TActionManager
@@ -3291,6 +3300,10 @@ object frmMain: TfrmMain
     object actPrintCancelWedding: TAction
       Caption = #1057#1074#1080#1076#1077#1090#1077#1083#1100#1089#1090#1074#1086' '#1086' '#1088#1072#1089#1090#1086#1088#1078#1077#1085#1080#1080
       OnExecute = actPrintCancelWeddingExecute
+    end
+    object actSchedule: TAction
+      Caption = #1056#1072#1089#1087#1080#1089#1072#1085#1080#1077' '#1089#1074#1072#1076#1077#1073
+      OnExecute = actScheduleExecute
     end
   end
   object dsWedding: TDataSource

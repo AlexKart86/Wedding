@@ -99,6 +99,8 @@ type
     actRevertCancelWedding: TAction;
     procRevertCancelWedding: TADOStoredProc;
     actPrintCancelWedding: TAction;
+    RibbonGroup8: TRibbonGroup;
+    actSchedule: TAction;
     procedure Ribbon1TabChange(Sender: TObject; const NewIndex,
       OldIndex: Integer; var AllowChange: Boolean);
     procedure actNewWeddingExecute(Sender: TObject);
@@ -123,6 +125,7 @@ type
     procedure actSetCancelWeddingExecute(Sender: TObject);
     procedure actRevertCancelWeddingExecute(Sender: TObject);
     procedure actPrintCancelWeddingExecute(Sender: TObject);
+    procedure actScheduleExecute(Sender: TObject);
   private
     procedure RefreshData;
     procedure RefreshActions;
@@ -137,6 +140,7 @@ uses
   fEditDeath,
   fEditBirth,
   fCancelWedding,
+  fWeddingSchedule,
   dataReports,
   EhLibADO,
   uUtils;
@@ -249,6 +253,11 @@ begin
     procRevertCancelWedding.ExecProc;
     RefreshData;
   end;
+end;
+
+procedure TfrmMain.actScheduleExecute(Sender: TObject);
+begin
+  TfrmWeddingSchedule.Run;
 end;
 
 procedure TfrmMain.actSetCancelWeddingExecute(Sender: TObject);
