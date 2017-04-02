@@ -2,10 +2,11 @@
   Left = 0
   Top = 0
   ActiveControl = edtLogin
-  BorderIcons = [biSystemMenu]
+  BorderIcons = []
+  BorderStyle = bsDialog
   Caption = #1055#1086#1076#1082#1083#1102#1095#1077#1085#1080#1077' '#1082' '#1041#1044
-  ClientHeight = 218
-  ClientWidth = 291
+  ClientHeight = 228
+  ClientWidth = 342
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -26,7 +27,7 @@
   end
   object Пароль: TLabel
     Left = 40
-    Top = 48
+    Top = 45
     Width = 43
     Height = 16
     Caption = #1055#1072#1088#1086#1083#1100
@@ -54,16 +55,17 @@
   object edtLogin: TEdit
     Left = 89
     Top = 8
-    Width = 193
+    Width = 234
     Height = 24
     TabOrder = 0
+    OnChange = edtLoginChange
   end
   object btnConnect: TButton
-    Left = 102
+    Left = 137
     Top = 185
     Width = 105
     Height = 25
-    Caption = #1055#1086#1076#1082#1083#1102#1095#1080#1090#1100#1089#1103
+    Caption = #1042#1093#1086#1076' '#1074' '#1073#1072#1079#1091
     Default = True
     ModalResult = 1
     TabOrder = 4
@@ -71,16 +73,17 @@
   end
   object edtPassword: TEdit
     Left = 89
-    Top = 44
-    Width = 193
+    Top = 41
+    Width = 234
     Height = 24
     PasswordChar = '*'
     TabOrder = 1
+    OnChange = edtPasswordChange
   end
   object edtServiceName: TEdit
     Left = 89
-    Top = 81
-    Width = 193
+    Top = 74
+    Width = 234
     Height = 24
     TabOrder = 2
     Text = 'AK\SQLEXPRESS'
@@ -89,7 +92,7 @@
   object edtConnectionString: TEdit
     Left = 8
     Top = 145
-    Width = 272
+    Width = 315
     Height = 21
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clGray
@@ -99,6 +102,24 @@
     ParentFont = False
     TabOrder = 3
     Text = 'edtLogin'
+  end
+  object btnCheckUser: TButton
+    Left = 8
+    Top = 185
+    Width = 123
+    Height = 25
+    Caption = #1055#1088#1086#1074#1077#1088#1080#1090#1100' '#1087#1072#1088#1086#1083#1100
+    TabOrder = 5
+    OnClick = btnCheckUserClick
+  end
+  object btnClose: TButton
+    Left = 248
+    Top = 185
+    Width = 75
+    Height = 25
+    Caption = #1042#1099#1093#1086#1076
+    TabOrder = 6
+    OnClick = btnCloseClick
   end
   object oqryCheckUser: TADOQuery
     Connection = dmMain.connMain

@@ -1,6 +1,6 @@
 object dmReports: TdmReports
   OldCreateOrder = False
-  Height = 214
+  Height = 295
   Width = 559
   object frxWedding: TfrxReport
     Version = '5.1.5'
@@ -2399,5 +2399,707 @@ object dmReports: TdmReports
     BCDToCurrency = False
     Left = 416
     Top = 96
+  end
+  object frxCancelWedding: TfrxReport
+    Version = '5.1.5'
+    DataSet = frxdsCancelWedding
+    DataSetName = 'frxDBDataset1'
+    DotMatrixReport = False
+    IniFile = '\Software\Fast Reports'
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PrintOptions.Printer = 'Default'
+    PrintOptions.PrintOnSheet = 0
+    ReportOptions.CreateDate = 42773.252046481500000000
+    ReportOptions.LastChange = 42827.938892916670000000
+    ScriptLanguage = 'PascalScript'
+    ScriptText.Strings = (
+      'begin'
+      ''
+      'end.')
+    Left = 39
+    Top = 166
+    Datasets = <
+      item
+        DataSet = frxdsCancelWedding
+        DataSetName = 'frxDBDataset1'
+      end>
+    Variables = <>
+    Style = <>
+    object Data: TfrxDataPage
+      Height = 1000.000000000000000000
+      Width = 1000.000000000000000000
+      object Memo6: TfrxMemoView
+        Left = 236.000000000000000000
+        Top = 112.000000000000000000
+        Width = 80.000000000000000000
+        Height = 16.000000000000000000
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -16
+        Font.Name = 'Arial'
+        Font.Style = []
+        HAlign = haCenter
+        Memo.UTF8W = (
+          '7777')
+        ParentFont = False
+        Wysiwyg = False
+      end
+    end
+    object Page1: TfrxReportPage
+      PaperWidth = 210.000000000000000000
+      PaperHeight = 297.000000000000000000
+      PaperSize = 9
+      LeftMargin = 10.000000000000000000
+      RightMargin = 10.000000000000000000
+      TopMargin = 10.000000000000000000
+      BottomMargin = 10.000000000000000000
+      object ReportTitle1: TfrxReportTitle
+        FillType = ftBrush
+        Height = 861.732840000000000000
+        Top = 18.897650000000000000
+        Width = 718.110700000000000000
+        object Memo1: TfrxMemoView
+          Left = 268.791280000000000000
+          Width = 181.417440000000000000
+          Height = 26.456710000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -21
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            #1057#1074#1080#1076#1077#1090#1077#1083#1100#1089#1090#1074#1086)
+          ParentFont = False
+        end
+        object Memo2: TfrxMemoView
+          Left = 233.814935000000000000
+          Top = 30.236239999999990000
+          Width = 251.370130000000000000
+          Height = 22.677180000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -21
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            #1086' '#1088#1072#1089#1090#1086#1088#1078#1077#1085#1080#1080' '#1073#1088#1072#1082#1072)
+          ParentFont = False
+        end
+        object Memo3: TfrxMemoView
+          Left = 12.559060000000000000
+          Top = 147.401670000000000000
+          Width = 86.929190000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            #1060#1072#1084#1080#1083#1080#1103)
+          ParentFont = False
+        end
+        object Memo4: TfrxMemoView
+          Left = 12.559060000000000000
+          Top = 179.527675000000000000
+          Width = 117.000000000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            #1048#1084#1103', '#1086#1090#1095#1077#1089#1090#1074#1086)
+          ParentFont = False
+        end
+        object Memo5: TfrxMemoView
+          Left = 12.559060000000000000
+          Top = 211.653680000000000000
+          Width = 107.000000000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            #1043#1088#1072#1078#1076#1072#1085#1089#1090#1074#1086)
+          ParentFont = False
+        end
+        object frxDBDataset1last_name_man: TfrxMemoView
+          Left = 166.401670000000000000
+          Top = 147.401670000000000000
+          Width = 464.882190000000000000
+          Height = 18.897650000000000000
+          DataField = 'last_name_man'
+          DataSet = frxdsCancelWedding
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Memo.UTF8W = (
+            '[frxDBDataset1."last_name_man"]')
+          ParentFont = False
+        end
+        object Line1: TfrxLineView
+          Left = 147.401670000000000000
+          Top = 168.299320000000000000
+          Width = 548.031849999999900000
+          Color = clBlack
+          Frame.Typ = [ftTop]
+        end
+        object Memo7: TfrxMemoView
+          Left = 166.401670000000000000
+          Top = 179.527675000000000000
+          Width = 464.882190000000000000
+          Height = 18.897650000000000000
+          DataField = 'fio_man'
+          DataSet = frxdsCancelWedding
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Memo.UTF8W = (
+            '[frxDBDataset1."fio_man"]')
+          ParentFont = False
+        end
+        object Line2: TfrxLineView
+          Left = 147.401670000000000000
+          Top = 202.315090000000000000
+          Width = 548.031849999999900000
+          Color = clBlack
+          Frame.Typ = [ftTop]
+        end
+        object Memo8: TfrxMemoView
+          Left = 158.842610000000000000
+          Top = 215.433210000000000000
+          Width = 464.882190000000000000
+          Height = 18.897650000000000000
+          DataField = 'm_country'
+          DataSet = frxdsCancelWedding
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Memo.UTF8W = (
+            '[frxDBDataset1."m_country"]')
+          ParentFont = False
+        end
+        object Line3: TfrxLineView
+          Left = 147.401670000000000000
+          Top = 232.551330000000000000
+          Width = 548.031849999999900000
+          Color = clBlack
+          Frame.Typ = [ftTop]
+        end
+        object Memo9: TfrxMemoView
+          Left = 11.338590000000000000
+          Top = 243.779685000000000000
+          Width = 122.000000000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            #1044#1072#1090#1072' '#1088#1086#1078#1076#1077#1085#1080#1103)
+          ParentFont = False
+        end
+        object Memo10: TfrxMemoView
+          Left = 165.181200000000000000
+          Top = 243.779685000000000000
+          Width = 464.882190000000000000
+          Height = 18.897650000000000000
+          DataField = 'm_birth_date'
+          DataSet = frxdsCancelWedding
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Memo.UTF8W = (
+            '[frxDBDataset1."m_birth_date"]')
+          ParentFont = False
+        end
+        object Line4: TfrxLineView
+          Left = 146.181200000000000000
+          Top = 262.787570000000000000
+          Width = 548.031849999999900000
+          Color = clBlack
+          Frame.Typ = [ftTop]
+        end
+        object Memo11: TfrxMemoView
+          Left = 11.338590000000000000
+          Top = 275.905690000000000000
+          Width = 132.000000000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            #1052#1077#1089#1090#1086' '#1088#1086#1078#1076#1077#1085#1080#1103)
+          ParentFont = False
+        end
+        object Memo12: TfrxMemoView
+          Left = 165.181200000000000000
+          Top = 275.905690000000000000
+          Width = 464.882190000000000000
+          Height = 18.897650000000000000
+          DataField = 'm_birth_adress'
+          DataSet = frxdsCancelWedding
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Memo.UTF8W = (
+            '[frxDBDataset1."m_birth_adress"]')
+          ParentFont = False
+        end
+        object Line5: TfrxLineView
+          Left = 146.181200000000000000
+          Top = 296.803340000000000000
+          Width = 548.031849999999900000
+          Color = clBlack
+          Frame.Typ = [ftTop]
+        end
+        object Memo13: TfrxMemoView
+          Left = 34.015770000000010000
+          Top = 321.260050000000000000
+          Width = 51.055040000000000000
+          Height = 22.677180000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Memo.UTF8W = (
+            #1048)
+          ParentFont = False
+        end
+        object Memo14: TfrxMemoView
+          Left = 12.559060000000000000
+          Top = 362.834880000000000000
+          Width = 86.929190000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            #1060#1072#1084#1080#1083#1080#1103)
+          ParentFont = False
+        end
+        object Memo15: TfrxMemoView
+          Left = 12.559060000000000000
+          Top = 394.960885000000000000
+          Width = 117.000000000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            #1048#1084#1103', '#1086#1090#1095#1077#1089#1090#1074#1086)
+          ParentFont = False
+        end
+        object Memo16: TfrxMemoView
+          Left = 12.559060000000000000
+          Top = 427.086890000000000000
+          Width = 107.000000000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            #1043#1088#1072#1078#1076#1072#1085#1089#1090#1074#1086)
+          ParentFont = False
+        end
+        object Memo17: TfrxMemoView
+          Left = 166.401670000000000000
+          Top = 362.834880000000000000
+          Width = 464.882190000000000000
+          Height = 18.897650000000000000
+          DataField = 'last_name_woman'
+          DataSet = frxdsCancelWedding
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Memo.UTF8W = (
+            '[frxDBDataset1."last_name_woman"]')
+          ParentFont = False
+        end
+        object Line6: TfrxLineView
+          Left = 147.401670000000000000
+          Top = 383.732530000000000000
+          Width = 548.031849999999900000
+          Color = clBlack
+          Frame.Typ = [ftTop]
+        end
+        object Memo18: TfrxMemoView
+          Left = 166.401670000000000000
+          Top = 394.960885000000000000
+          Width = 464.882190000000000000
+          Height = 18.897650000000000000
+          DataField = 'fio_woman'
+          DataSet = frxdsCancelWedding
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Memo.UTF8W = (
+            '[frxDBDataset1."fio_woman"]')
+          ParentFont = False
+        end
+        object Line7: TfrxLineView
+          Left = 147.401670000000000000
+          Top = 413.968770000000000000
+          Width = 548.031849999999900000
+          Color = clBlack
+          Frame.Typ = [ftTop]
+        end
+        object Memo19: TfrxMemoView
+          Left = 166.401670000000000000
+          Top = 427.086890000000000000
+          Width = 464.882190000000000000
+          Height = 18.897650000000000000
+          DataField = 'w_country'
+          DataSet = frxdsCancelWedding
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Memo.UTF8W = (
+            '[frxDBDataset1."w_country"]')
+          ParentFont = False
+        end
+        object Line8: TfrxLineView
+          Left = 147.401670000000000000
+          Top = 447.984540000000000000
+          Width = 548.031849999999900000
+          Color = clBlack
+          Frame.Typ = [ftTop]
+        end
+        object Memo20: TfrxMemoView
+          Left = 11.338590000000000000
+          Top = 459.212895000000000000
+          Width = 122.000000000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            #1044#1072#1090#1072' '#1088#1086#1078#1076#1077#1085#1080#1103)
+          ParentFont = False
+        end
+        object Memo21: TfrxMemoView
+          Left = 165.181200000000000000
+          Top = 459.212895000000000000
+          Width = 464.882190000000000000
+          Height = 18.897650000000000000
+          DataField = 'w_birth_date'
+          DataSet = frxdsCancelWedding
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Memo.UTF8W = (
+            '[frxDBDataset1."w_birth_date"]')
+          ParentFont = False
+        end
+        object Line9: TfrxLineView
+          Left = 146.181200000000000000
+          Top = 478.220780000000000000
+          Width = 548.031849999999900000
+          Color = clBlack
+          Frame.Typ = [ftTop]
+        end
+        object Memo22: TfrxMemoView
+          Left = 11.338590000000000000
+          Top = 491.338900000000000000
+          Width = 132.000000000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            #1052#1077#1089#1090#1086' '#1088#1086#1078#1076#1077#1085#1080#1103)
+          ParentFont = False
+        end
+        object Memo23: TfrxMemoView
+          Left = 165.181200000000000000
+          Top = 491.338900000000000000
+          Width = 464.882190000000000000
+          Height = 18.897650000000000000
+          DataField = 'w_birth_adress'
+          DataSet = frxdsCancelWedding
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Memo.UTF8W = (
+            '[frxDBDataset1."w_birth_adress"]')
+          ParentFont = False
+        end
+        object Line10: TfrxLineView
+          Left = 146.181200000000000000
+          Top = 512.236549999999900000
+          Width = 548.031849999999900000
+          Color = clBlack
+          Frame.Typ = [ftTop]
+        end
+        object Memo24: TfrxMemoView
+          Left = 215.433210000000000000
+          Top = 64.252010000000000000
+          Width = 291.023810000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -21
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Memo.UTF8W = (
+            #8470)
+          ParentFont = False
+        end
+        object Line11: TfrxLineView
+          Left = 238.110390000000000000
+          Top = 86.929190000000000000
+          Width = 268.346630000000000000
+          Color = clBlack
+          Frame.Typ = [ftTop]
+        end
+        object frxDBDataset1ACT_NUM: TfrxMemoView
+          Left = 252.008040000000000000
+          Top = 60.472479999999990000
+          Width = 241.889920000000000000
+          Height = 22.677180000000000000
+          DataField = 'CANCEL_NUM'
+          DataSet = frxdsCancelWedding
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -21
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Memo.UTF8W = (
+            '[frxDBDataset1."CANCEL_NUM"]')
+          ParentFont = False
+        end
+        object Memo31: TfrxMemoView
+          Left = 260.787570000000000000
+          Top = 661.417750000000000000
+          Width = 106.440940000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            #1044#1072#1090#1072' '#1074#1099#1076#1072#1095#1080)
+          ParentFont = False
+        end
+        object Memo32: TfrxMemoView
+          Left = 389.393940000000000000
+          Top = 661.417750000000000000
+          Width = 188.976500000000000000
+          Height = 18.897650000000000000
+          DataField = 'CANCEL_DATE'
+          DataSet = frxdsCancelWedding
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Memo.UTF8W = (
+            '[frxDBDataset1."CANCEL_DATE"]')
+          ParentFont = False
+        end
+        object Line14: TfrxLineView
+          Left = 389.291590000000000000
+          Top = 682.315400000000000000
+          Width = 204.094620000000000000
+          Color = clBlack
+          Frame.Typ = [ftTop]
+        end
+        object Memo33: TfrxMemoView
+          Left = 260.787570000000000000
+          Top = 699.213050000000000000
+          Width = 264.000000000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            #1056#1091#1082#1086#1074#1086#1076#1080#1090#1077#1083#1100' '#1086#1088#1075#1072#1085#1072' '#1079#1072#1087#1080#1089#1080' '#1072#1082#1090#1086#1074)
+          ParentFont = False
+        end
+        object Line15: TfrxLineView
+          Left = 260.787570000000000000
+          Top = 748.346940000000000000
+          Width = 423.307360000000000000
+          Color = clBlack
+          Frame.Typ = [ftTop]
+        end
+        object Memo34: TfrxMemoView
+          Left = 68.031540000000010000
+          Top = 721.890230000000000000
+          Width = 26.456710000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            #1084'.'#1087'.')
+          ParentFont = False
+        end
+        object Memo25: TfrxMemoView
+          Left = 11.338590000000000000
+          Top = 109.606370000000000000
+          Width = 120.944960000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Memo.UTF8W = (
+            #1041#1088#1072#1082' '#1084#1077#1078#1076#1091)
+          ParentFont = False
+        end
+        object Memo26: TfrxMemoView
+          Left = 15.118120000000000000
+          Top = 540.472790000000000000
+          Width = 200.031540000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            #1087#1088#1077#1082#1088#1072#1097#1077#1085' '#1085#1072' '#1086#1089#1085#1086#1074#1072#1085#1080#1080' ')
+          ParentFont = False
+        end
+        object Memo27: TfrxMemoView
+          Left = 248.567100000000000000
+          Top = 538.472790000000000000
+          Width = 389.291590000000000000
+          Height = 18.897650000000000000
+          DataField = 'CANCEL_REASON'
+          DataSet = frxdsCancelWedding
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Memo.UTF8W = (
+            '[frxDBDataset1."CANCEL_REASON"]')
+          ParentFont = False
+        end
+        object Line12: TfrxLineView
+          Left = 240.669450000000000000
+          Top = 561.370440000000000000
+          Width = 457.323130000000000000
+          Color = clBlack
+          Frame.Typ = [ftTop]
+        end
+      end
+    end
+  end
+  object dataCancelWedding: TADOQuery
+    Connection = dmMain.connMain
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'wedding_id'
+        Attributes = [paSigned]
+        DataType = ftInteger
+        Precision = 10
+        Size = 4
+        Value = Null
+      end>
+    SQL.Strings = (
+      'select w.WEDDING_ID,'
+      ' w.CANCEL_NUM,'
+      ' w.CANCEL_DATE,'
+      ' w.CANCEL_REASON,'
+      ' p_man.PREV_LAST_NAME last_name_man,'
+      
+        ' p_man.FIRST_NAME + '#39' '#39' + ISNULL(p_man.MIDDLE_NAME, '#39#39') as fio_m' +
+        'an,'
+      ' p_woman.PREV_LAST_NAME last_name_woman,'
+      
+        ' p_woman.FIRST_NAME + '#39' '#39' + ISNULL(p_woman.MIDDLE_NAME, '#39#39') as f' +
+        'io_woman,'
+      ' dc_woman.COUNTRY_NAME as w_country,'
+      ' dc_man.COUNTRY_NAME as m_country,'
+      ' p_man.BIRTH_DATE as m_birth_date,'
+      ' p_man.BIRTH_ADRESS as m_birth_adress,'
+      ' p_woman.BIRTH_DATE as w_birth_date,'
+      ' p_woman.BIRTH_ADRESS as w_birth_adress,'
+      ' p_man.LAST_NAME as m_last_name,'
+      ' p_woman.LAST_NAME as w_last_name'
+      'from wedding w'
+      'join PERSONS p_man'
+      'on w.MAN_ID = p_man.PERSON_ID'
+      'left join DICT_COUNTRY dc_man'
+      'on p_man.COUNTRY_ID = dc_man.COUNTRY_ID'
+      'join PERSONS p_woman'
+      'on w.WOMAN_ID = p_woman.PERSON_ID'
+      'left join DICT_COUNTRY dc_woman'
+      'on p_woman.COUNTRY_ID = dc_woman.COUNTRY_ID'
+      'where wedding_id = :wedding_id')
+    Left = 136
+    Top = 168
+  end
+  object frxdsCancelWedding: TfrxDBDataset
+    UserName = 'frxDBDataset1'
+    CloseDataSource = False
+    DataSet = dataCancelWedding
+    BCDToCurrency = False
+    Left = 48
+    Top = 224
   end
 end

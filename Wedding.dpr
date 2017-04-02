@@ -9,16 +9,22 @@ uses
   uUtils in 'uUtils.pas',
   fEditDeath in 'fEditDeath.pas' {frmEditDeath},
   fEditBirth in 'fEditBirth.pas' {frmEditBirth},
-  dataReports in 'dataReports.pas' {dmReports: TDataModule};
+  dataReports in 'dataReports.pas' {dmReports: TDataModule},
+  fCancelWedding in 'fCancelWedding.pas' {frmCancelWedding},
+  fModalFormEditor in 'fModalFormEditor.pas' {frmModalFormEditor};
 
 {$R *.res}
 
 begin
   Application.Initialize;
-  Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TfrmMain, frmMain);
   Application.CreateForm(TdmMain, dmMain);
-  Application.CreateForm(TdmReports, dmReports);
+  Application.MainFormOnTaskbar := True;
   if TfrmLogin.Login then
-     Application.Run;
+  begin
+    Application.CreateForm(TfrmMain, frmMain);
+    Application.CreateForm(TdmReports, dmReports);
+    Application.Run;
+  end
+  else
+    Application.Terminate;
 end.

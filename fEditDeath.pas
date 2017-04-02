@@ -51,6 +51,9 @@ type
     DBRadioGroup1: TDBRadioGroup;
     dataDeathREG_DATE: TDateField;
     DBDateTimeEditEh3: TDBDateTimeEditEh;
+    GroupBox3: TGroupBox;
+    DBEditEh8: TDBEditEh;
+    dataDeathDEATH_REASON: TStringField;
     procedure Button1Click(Sender: TObject);
    public
     class function Insert: Boolean;

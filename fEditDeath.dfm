@@ -19,7 +19,7 @@ object frmEditDeath: TfrmEditDeath
     Left = 24
     Top = 76
     Width = 737
-    Height = 269
+    Height = 273
     Caption = #1057#1074#1077#1076#1077#1085#1080#1103' '#1086' '#1091#1084#1077#1088#1096#1077#1084
     TabOrder = 3
     object dbeMLastName: TDBEditEh
@@ -322,6 +322,38 @@ object frmEditDeath: TfrmEditDeath
         '0'
         '1')
     end
+    object GroupBox3: TGroupBox
+      Left = 400
+      Top = 200
+      Width = 324
+      Height = 61
+      Caption = #1048#1085#1099#1077' '#1089#1074#1077#1076#1077#1085#1080#1103
+      TabOrder = 9
+      object DBEditEh8: TDBEditEh
+        Left = 11
+        Top = 30
+        Width = 307
+        Height = 24
+        ControlLabel.Width = 95
+        ControlLabel.Height = 16
+        ControlLabel.Caption = #1055#1088#1080#1095#1080#1085#1072' '#1089#1084#1077#1088#1090#1080
+        ControlLabel.Font.Charset = DEFAULT_CHARSET
+        ControlLabel.Font.Color = clWindowText
+        ControlLabel.Font.Height = -13
+        ControlLabel.Font.Name = 'Tahoma'
+        ControlLabel.Font.Style = []
+        ControlLabel.ParentFont = False
+        ControlLabel.Visible = True
+        ControlLabelLocation.Spacing = 0
+        DataField = 'DEATH_REASON'
+        DataSource = dsDeath
+        DynProps = <>
+        EditButtons = <>
+        HighlightRequired = True
+        TabOrder = 0
+        Visible = True
+      end
+    end
   end
   object Button1: TButton
     Left = 24
@@ -548,6 +580,10 @@ object frmEditDeath: TfrmEditDeath
       FieldName = 'REG_DATE'
       Required = True
     end
+    object dataDeathDEATH_REASON: TStringField
+      FieldName = 'DEATH_REASON'
+      Size = 1000
+    end
   end
   object procSave: TADOStoredProc
     Connection = dmMain.connMain
@@ -581,6 +617,12 @@ object frmEditDeath: TfrmEditDeath
         Attributes = [paNullable]
         DataType = ftString
         Size = 10
+      end
+      item
+        Name = '@death_reason'
+        Attributes = [paNullable]
+        DataType = ftString
+        Size = 1000
       end
       item
         Name = '@person_id'
@@ -668,7 +710,7 @@ object frmEditDeath: TfrmEditDeath
   end
   object dsDeath: TDataSource
     DataSet = dataDeath
-    Left = 664
-    Top = 288
+    Left = 368
+    Top = 184
   end
 end

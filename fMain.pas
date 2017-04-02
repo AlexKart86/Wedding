@@ -8,7 +8,7 @@ uses
   System.Actions, Vcl.ActnList, Vcl.RibbonLunaStyleActnCtrls, Vcl.ActnMan,
   DBGridEhGrouping, ToolCtrlsEh, DBGridEhToolCtrls, DynVarsEh, EhLibVCL,
   GridsEh, DBAxisGridsEh, DBGridEh, Vcl.ToolWin, Vcl.ActnCtrls, Vcl.Ribbon,
-  Vcl.DBActns, dataMain, frxClass;
+  Vcl.DBActns, dataMain, frxClass, Vcl.Imaging.jpeg, Vcl.ExtCtrls;
 
 type
   TfrmMain = class(TForm)
@@ -88,6 +88,17 @@ type
     dataSumwoman_death: TIntegerField;
     dataSumtotal_death: TIntegerField;
     dataSumweddings: TIntegerField;
+    tsMain: TTabSheet;
+    Image1: TImage;
+    rbMain: TRibbonPage;
+    RibbonGroup7: TRibbonGroup;
+    dataWeddingsCANCEL_NUM: TStringField;
+    dataWeddingsCANCEL_DATE: TDateField;
+    dataWeddingsIS_CANCEL: TIntegerField;
+    actSetCancelWedding: TAction;
+    actRevertCancelWedding: TAction;
+    procRevertCancelWedding: TADOStoredProc;
+    actPrintCancelWedding: TAction;
     procedure Ribbon1TabChange(Sender: TObject; const NewIndex,
       OldIndex: Integer; var AllowChange: Boolean);
     procedure actNewWeddingExecute(Sender: TObject);
@@ -108,6 +119,10 @@ type
     procedure actPrintWeddingExecute(Sender: TObject);
     procedure actPrintDeathExecute(Sender: TObject);
     procedure actPrintBirthExecute(Sender: TObject);
+    procedure dataWeddingsAfterScroll(DataSet: TDataSet);
+    procedure actSetCancelWeddingExecute(Sender: TObject);
+    procedure actRevertCancelWeddingExecute(Sender: TObject);
+    procedure actPrintCancelWeddingExecute(Sender: TObject);
   private
     procedure RefreshData;
     procedure RefreshActions;
@@ -121,6 +136,7 @@ uses
   fEditWedding,
   fEditDeath,
   fEditBirth,
+  fCancelWedding,
   dataReports,
   EhLibADO,
   uUtils;
@@ -203,6 +219,13 @@ begin
   dmReports.frxBirth.ShowReport();
 end;
 
+procedure TfrmMain.actPrintCancelWeddingExecute(Sender: TObject);
+begin
+  dmReports.dataCancelWedding.Parameters.ParamValues['wedding_id'] := dataWeddingsWEDDING_ID.Value;
+  dmReports.dataCancelWedding.Reopen;
+  dmReports.frxCancelWedding.ShowReport();
+end;
+
 procedure TfrmMain.actPrintDeathExecute(Sender: TObject);
 begin
   dmReports.dataDeath.Parameters.ParamValues['death_id'] := dataDeathDEATH_ID.Value;
@@ -217,7 +240,29 @@ begin
   dmReports.frxWedding.ShowReport();
 end;
 
+procedure TfrmMain.actRevertCancelWeddingExecute(Sender: TObject);
+begin
+   if MessageDlg('Отменить расторжение брака? Изменения невозможно будет отменить',
+       mtWarning, [mbYes, mbNo], 0) = mrYes then
+  begin
+    procRevertCancelWedding.Parameters.ParamValues['@wedding_id'] := dataWeddingsWEDDING_ID.Value;
+    procRevertCancelWedding.ExecProc;
+    RefreshData;
+  end;
+end;
+
+procedure TfrmMain.actSetCancelWeddingExecute(Sender: TObject);
+begin
+  if TfrmCancelWedding.Run(dataWeddingsWEDDING_ID.Value) then
+    RefreshData;
+end;
+
 procedure TfrmMain.dataWeddingsAfterOpen(DataSet: TDataSet);
+begin
+  RefreshActions;
+end;
+
+procedure TfrmMain.dataWeddingsAfterScroll(DataSet: TDataSet);
 begin
   RefreshActions;
 end;
@@ -263,6 +308,10 @@ begin
 
   actEditBirth.Enabled := dataBirth.Active and (dataBirth.RecordCount > 0);
   actDelDeath.Enabled := dataBirth.Active and (dataBirth.RecordCount > 0);
+
+  actSetCancelWedding.Enabled := dataWeddings.Active;
+  actRevertCancelWedding.Enabled := dataWeddings.Active  and (dataWeddingsIS_CANCEL.Value = 1);
+  actPrintCancelWedding.Enabled := dataWeddings.Active  and (dataWeddingsIS_CANCEL.Value = 1);
 end;
 
 procedure TfrmMain.RefreshData;

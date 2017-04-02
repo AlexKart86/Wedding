@@ -22,11 +22,18 @@ type
     oqryCheckUserUSER_ID: TAutoIncField;
     oqryCheckUserUSER_NAME: TStringField;
     oqryCheckUserUSER_PASS: TStringField;
+    btnCheckUser: TButton;
+    btnClose: TButton;
     procedure edtServiceNameChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnConnectClick(Sender: TObject);
+    procedure btnCloseClick(Sender: TObject);
+    procedure btnCheckUserClick(Sender: TObject);
+    procedure edtPasswordChange(Sender: TObject);
+    procedure edtLoginChange(Sender: TObject);
   private
     procedure BuildConnectString;
+    function CheckUserPass: Boolean;
   public
     class function Login: Boolean;
   end;
@@ -49,6 +56,8 @@ begin
   dmMain.connMain.ConnectionString := edtConnectionString.Text;
   try
     dmMain.connMain.Connected := True;
+    if not CheckUserPass then
+      Exit;
   Except on E: Exception do
     begin
       MessageDlg('Не удалось подключиться к серверу: '#13#10+
@@ -57,20 +66,55 @@ begin
     end;
   end;
 
-  oqryCheckUser.Parameters.ParamValues['user_name'] := edtLogin.Text;
-  oqryCheckUser.Parameters.ParamValues['user_pass'] := edtPassword.Text;
-  oqryCheckUser.Open;
-  if oqryCheckUser.RecordCount = 0 then
-  begin
-    MessageDlg('Неправильное имя пользователя или пароль', mtError, [mbOk], 0);
-    Exit;
-  end;
+
   ModalResult := mrOk;
 end;
 
 procedure TfrmLogin.BuildConnectString;
 begin
   edtConnectionString.Text := Format(cnstConnStringTemplate, [edtServiceName.Text]);
+end;
+
+procedure TfrmLogin.btnCheckUserClick(Sender: TObject);
+begin
+  if not CheckUserPass then
+  begin
+    btnCheckUser.Enabled := False;
+    btnConnect.Enabled := False;
+  end
+  else
+  begin
+    btnConnect.Enabled := True;
+  end;
+end;
+
+procedure TfrmLogin.btnCloseClick(Sender: TObject);
+begin
+  dmMain.connMain.Connected := False;
+  Close;
+end;
+
+function TfrmLogin.CheckUserPass: Boolean;
+begin
+  oqryCheckUser.Close;
+  oqryCheckUser.Parameters.ParamValues['user_name'] := edtLogin.Text;
+  oqryCheckUser.Parameters.ParamValues['user_pass'] := edtPassword.Text;
+  oqryCheckUser.Open;
+  Result  := oqryCheckUser.RecordCount > 0;
+  if  not Result then
+    MessageDlg('Неправильное имя пользователя или пароль', mtError, [mbOk], 0);
+end;
+
+procedure TfrmLogin.edtLoginChange(Sender: TObject);
+begin
+  btnCheckUser.Enabled := True;
+  btnConnect.Enabled := True;
+end;
+
+procedure TfrmLogin.edtPasswordChange(Sender: TObject);
+begin
+  btnCheckUser.Enabled := True;
+  btnConnect.Enabled := True;
 end;
 
 procedure TfrmLogin.edtServiceNameChange(Sender: TObject);

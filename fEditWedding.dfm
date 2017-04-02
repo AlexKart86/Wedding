@@ -3,7 +3,7 @@ object frmEditWedding: TfrmEditWedding
   Top = 0
   BorderStyle = bsDialog
   Caption = #1040#1082#1090' '#1088#1077#1075#1080#1089#1090#1088#1072#1094#1080#1080
-  ClientHeight = 589
+  ClientHeight = 604
   ClientWidth = 803
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -17,9 +17,25 @@ object frmEditWedding: TfrmEditWedding
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 16
+  object lblWarning: TLabel
+    Left = 14
+    Top = 5
+    Width = 519
+    Height = 16
+    Caption = 
+      #1056#1077#1075#1080#1089#1090#1088#1072#1094#1080#1103' '#1073#1088#1072#1082#1072' '#1073#1099#1083#1072' '#1088#1072#1089#1090#1086#1088#1075#1085#1091#1090#1072', '#1076#1072#1085#1085#1099#1077' '#1076#1086#1089#1090#1091#1087#1085#1099' '#1090#1086#1083#1100#1082#1086' '#1076#1083#1103' '#1095 +
+      #1090#1077#1085#1080#1103' '
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clRed
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+    Visible = False
+  end
   object GroupBox1: TGroupBox
     Left = 24
-    Top = 88
+    Top = 108
     Width = 345
     Height = 449
     Caption = #1046#1077#1085#1080#1093
@@ -283,7 +299,7 @@ object frmEditWedding: TfrmEditWedding
         Visible = True
       end
       object DBDateTimeEditEh2: TDBDateTimeEditEh
-        Left = 89
+        Left = 88
         Top = 77
         Width = 118
         Height = 24
@@ -369,18 +385,18 @@ object frmEditWedding: TfrmEditWedding
       Visible = True
     end
   end
-  object Button1: TButton
+  object btnSave: TButton
     Left = 24
-    Top = 550
+    Top = 570
     Width = 121
     Height = 25
     Caption = #1057#1086#1093#1088#1072#1085#1080#1090#1100
     TabOrder = 5
-    OnClick = Button1Click
+    OnClick = btnSaveClick
   end
   object GroupBox3: TGroupBox
     Left = 400
-    Top = 88
+    Top = 108
     Width = 345
     Height = 449
     Caption = #1053#1077#1074#1077#1089#1090#1072
@@ -731,7 +747,7 @@ object frmEditWedding: TfrmEditWedding
   end
   object dbeRegNumber: TDBEditEh
     Left = 179
-    Top = 8
+    Top = 28
     Width = 182
     Height = 24
     ControlLabel.Width = 143
@@ -756,7 +772,7 @@ object frmEditWedding: TfrmEditWedding
   end
   object dbdtRegDate: TDBDateTimeEditEh
     Left = 179
-    Top = 46
+    Top = 66
     Width = 182
     Height = 24
     ControlLabel.Width = 119
@@ -781,7 +797,7 @@ object frmEditWedding: TfrmEditWedding
   end
   object dbdtCeremonyDate: TDBDateTimeEditEh
     Left = 529
-    Top = 46
+    Top = 66
     Width = 178
     Height = 24
     ControlLabel.Width = 128
@@ -810,27 +826,29 @@ object frmEditWedding: TfrmEditWedding
     LockType = ltBatchOptimistic
     AfterInsert = dataWeddingAfterInsert
     CommandText = 
-      'select w.*,'#13#10#13#10#9'   p_man.BIRTH_ADRESS as m_birth_adress,'#9'   '#13#10#9' ' +
-      '  p_man.BIRTH_DATE as m_birth_date,'#13#10#9'   p_man.COUNTRY_ID as m_c' +
-      'ountry_id,'#13#10#9'   p_man.CURR_ADRESS as m_curr_adress,'#13#10#9'   p_man.F' +
-      'IRST_NAME as m_first_name,'#13#10#9'   p_man.LAST_NAME  as m_last_name,' +
-      #13#10#9'   p_man.MIDDLE_NAME as m_middle_name,'#13#10#9'   p_man.PASSPORT_DA' +
-      'TE as m_passport_date,'#13#10#9'   p_man.PASSPORT_ISSUED as m_passport_' +
-      'issued,'#13#10#9'   p_man.PASSPORT_NUMBER as m_passport_number,'#13#10#9'   p_' +
-      'man.PASSPORT_SERIES as m_passport_series,'#13#10#9'   p_man.PERSON_ID a' +
-      's m_person_id,'#13#10#9'   p_man.PREV_LAST_NAME as m_prev_last_name,'#9'  ' +
-      #13#10#13#10#9'   p_woman.BIRTH_ADRESS as w_birth_adress,'#9'   '#13#10#9'   p_woman' +
-      '.BIRTH_DATE as w_birth_date,'#13#10#9'   p_woman.COUNTRY_ID as w_countr' +
-      'y_id,'#13#10#9'   p_woman.CURR_ADRESS as w_curr_adress,'#13#10#9'   p_woman.FI' +
-      'RST_NAME as w_first_name,'#13#10#9'   p_woman.LAST_NAME  as w_last_name' +
-      ','#13#10#9'   p_woman.MIDDLE_NAME as w_middle_name,'#13#10#9'   p_woman.PASSPO' +
-      'RT_DATE as w_passport_date,'#13#10#9'   p_woman.PASSPORT_ISSUED as w_pa' +
-      'ssport_issued,'#13#10#9'   p_woman.PASSPORT_NUMBER as w_passport_number' +
-      ','#13#10#9'   p_woman.PASSPORT_SERIES as w_passport_series,'#13#10#9'   p_woma' +
-      'n.PERSON_ID as w_person_id,'#13#10#9'   p_woman.PREV_LAST_NAME as w_pre' +
-      'v_last_name'#13#10'from wedding w'#13#10'join PERSONS p_man'#13#10'on w.MAN_ID = p' +
-      '_man.PERSON_ID'#13#10'join PERSONS p_woman'#13#10'on w.WOMAN_ID = p_woman.PE' +
-      'RSON_ID'#13#10'where wedding_id = :wedding_id'
+      'select w.*,'#13#10'      case when ISNULL(w.CANCEL_NUM, '#39#39') = '#39#39' then ' +
+      '0'#13#10'      else 1'#13#10'      end is_cancel,      '#13#10#9'   p_man.BIRTH_ADR' +
+      'ESS as m_birth_adress,'#9'   '#13#10#9'   p_man.BIRTH_DATE as m_birth_date' +
+      ','#13#10#9'   p_man.COUNTRY_ID as m_country_id,'#13#10#9'   p_man.CURR_ADRESS ' +
+      'as m_curr_adress,'#13#10#9'   p_man.FIRST_NAME as m_first_name,'#13#10#9'   p_' +
+      'man.LAST_NAME  as m_last_name,'#13#10#9'   p_man.MIDDLE_NAME as m_middl' +
+      'e_name,'#13#10#9'   p_man.PASSPORT_DATE as m_passport_date,'#13#10#9'   p_man.' +
+      'PASSPORT_ISSUED as m_passport_issued,'#13#10#9'   p_man.PASSPORT_NUMBER' +
+      ' as m_passport_number,'#13#10#9'   p_man.PASSPORT_SERIES as m_passport_' +
+      'series,'#13#10#9'   p_man.PERSON_ID as m_person_id,'#13#10#9'   p_man.PREV_LAS' +
+      'T_NAME as m_prev_last_name,'#9'  '#13#10#13#10#9'   p_woman.BIRTH_ADRESS as w_' +
+      'birth_adress,'#9'   '#13#10#9'   p_woman.BIRTH_DATE as w_birth_date,'#13#10#9'   ' +
+      'p_woman.COUNTRY_ID as w_country_id,'#13#10#9'   p_woman.CURR_ADRESS as ' +
+      'w_curr_adress,'#13#10#9'   p_woman.FIRST_NAME as w_first_name,'#13#10#9'   p_w' +
+      'oman.LAST_NAME  as w_last_name,'#13#10#9'   p_woman.MIDDLE_NAME as w_mi' +
+      'ddle_name,'#13#10#9'   p_woman.PASSPORT_DATE as w_passport_date,'#13#10#9'   p' +
+      '_woman.PASSPORT_ISSUED as w_passport_issued,'#13#10#9'   p_woman.PASSPO' +
+      'RT_NUMBER as w_passport_number,'#13#10#9'   p_woman.PASSPORT_SERIES as ' +
+      'w_passport_series,'#13#10#9'   p_woman.PERSON_ID as w_person_id,'#13#10#9'   p' +
+      '_woman.PREV_LAST_NAME as w_prev_last_name'#13#10'from wedding w'#13#10'join ' +
+      'PERSONS p_man'#13#10'on w.MAN_ID = p_man.PERSON_ID'#13#10'join PERSONS p_wom' +
+      'an'#13#10'on w.WOMAN_ID = p_woman.PERSON_ID'#13#10'where wedding_id = :weddi' +
+      'ng_id'
     Parameters = <
       item
         Name = 'wedding_id'
@@ -840,8 +858,8 @@ object frmEditWedding: TfrmEditWedding
         Size = 4
         Value = Null
       end>
-    Left = 368
-    Top = 480
+    Left = 760
+    Top = 276
     object dataWeddingWEDDING_ID: TAutoIncField
       FieldName = 'WEDDING_ID'
       ReadOnly = True
@@ -999,6 +1017,17 @@ object frmEditWedding: TfrmEditWedding
     end
     object dataWeddingw_birth_date: TDateField
       FieldName = 'w_birth_date'
+    end
+    object dataWeddingis_cancel: TIntegerField
+      FieldName = 'is_cancel'
+      ReadOnly = True
+    end
+    object dataWeddingCANCEL_NUM: TStringField
+      FieldName = 'CANCEL_NUM'
+      Size = 50
+    end
+    object dataWeddingCANCEL_DATE: TDateField
+      FieldName = 'CANCEL_DATE'
     end
   end
   object procSave: TADOStoredProc
@@ -1230,12 +1259,12 @@ object frmEditWedding: TfrmEditWedding
         Precision = 10
         Value = Null
       end>
-    Left = 600
-    Top = 528
+    Left = 760
+    Top = 420
   end
   object dsWedding: TDataSource
     DataSet = dataWedding
-    Left = 504
-    Top = 496
+    Left = 752
+    Top = 348
   end
 end

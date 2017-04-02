@@ -14,7 +14,7 @@ type
     dataWedding: TADODataSet;
     procSave: TADOStoredProc;
     dsWedding: TDataSource;
-    Button1: TButton;
+    btnSave: TButton;
     dataWeddingWEDDING_ID: TAutoIncField;
     dataWeddingACT_NUM: TStringField;
     dataWeddingMAN_ID: TIntegerField;
@@ -82,11 +82,17 @@ type
     DBEditEh14: TDBEditEh;
     dataWeddingm_birth_date: TDateField;
     dataWeddingw_birth_date: TDateField;
-    procedure Button1Click(Sender: TObject);
+    lblWarning: TLabel;
+    dataWeddingis_cancel: TIntegerField;
+    dataWeddingCANCEL_NUM: TStringField;
+    dataWeddingCANCEL_DATE: TDateField;
+    procedure btnSaveClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure dbemPrevLastNameExit(Sender: TObject);
     procedure dataWeddingAfterInsert(DataSet: TDataSet);
+  private
+    procedure SetIsCancel;
   public
     class function Insert: Boolean;
     class function Edit(AWeddingId: Integer): Boolean;
@@ -100,7 +106,7 @@ uses uUtils;
 
 { TfrmEditWedding }
 
-procedure TfrmEditWedding.Button1Click(Sender: TObject);
+procedure TfrmEditWedding.btnSaveClick(Sender: TObject);
 begin
   if dataWedding.PostSafe then
   begin
@@ -131,6 +137,8 @@ begin
   frm := TfrmEditWedding.Create(nil);
   frm.dataWedding.Parameters.ParamValues['wedding_id'] := AWeddingId;
   frm.dataWedding.Open;
+  if frm.dataWeddingis_cancel.Value = 1 then
+     frm.SetIsCancel;
   Result := frm.ShowModal = mrOk;
 end;
 
@@ -153,6 +161,43 @@ begin
   frm.dataWedding.Open;
   frm.dataWedding.Insert;
   Result := frm.ShowModal = mrOk;
+end;
+
+procedure TfrmEditWedding.SetIsCancel;
+var
+   i: Integer;
+const
+   ReadOnlyColor = clBtnFace;
+begin
+  lblWarning.Caption := Format('Регистрация брака была расторгнута (Акт %s от %s). Данные доступны только для чтения',
+      [dataWeddingCANCEL_NUM.AsString, dataWeddingCANCEL_DATE.AsAnsiString]);
+  lblWarning.Visible := True;
+  btnSave.Enabled := False;
+  for i := 0 to ComponentCount-1 do
+  begin
+    if Components[i] is TDBEditEh then
+    begin
+      TDBEditEh(Components[i]).ReadOnly := True;
+      TDBEditEh(Components[i]).Color := ReadOnlyColor;
+    end;
+    if Components[i] is TDBLookupComboboxEh then
+    begin
+      TDBLookupComboboxEh(Components[i]).ReadOnly := True;
+      TDBLookupComboboxEh(Components[i]).Color := ReadOnlyColor;
+    end;
+    if Components[i] is TDBDateTimeEditEh then
+    begin
+      TDBDateTimeEditEh(Components[i]).ReadOnly := True;
+      TDBDateTimeEditEh(Components[i]).Color := ReadOnlyColor;
+    end;
+    if Components[i] is TDBComboBoxEh then
+    begin
+      TDBComboBoxEh(Components[i]).ReadOnly := True;
+      TDBComboBoxEh(Components[i]).Color := ReadOnlyColor;
+    end;
+  end;
+
+
 end;
 
 end.

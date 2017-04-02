@@ -46,6 +46,9 @@ type
     dataBirth: TADOQuery;
     frxBirth: TfrxReport;
     frxdsBirth: TfrxDBDataset;
+    frxCancelWedding: TfrxReport;
+    dataCancelWedding: TADOQuery;
+    frxdsCancelWedding: TfrxDBDataset;
   private
     { Private declarations }
   public
