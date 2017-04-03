@@ -2,8 +2,8 @@ object frmWeddingSchedule: TfrmWeddingSchedule
   Left = 0
   Top = 0
   Caption = #1056#1072#1089#1087#1080#1089#1072#1085#1080#1077' '#1089#1074#1072#1076#1077#1073
-  ClientHeight = 300
-  ClientWidth = 635
+  ClientHeight = 322
+  ClientWidth = 660
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11,15 +11,16 @@ object frmWeddingSchedule: TfrmWeddingSchedule
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poScreenCenter
   OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 16
   object DBGridEh1: TDBGridEh
     Left = 0
-    Top = 88
-    Width = 635
-    Height = 212
-    Align = alBottom
+    Top = 72
+    Width = 660
+    Height = 250
+    Align = alClient
     DataSource = dsWedding
     DynProps = <>
     IndicatorOptions = [gioShowRowIndicatorEh]
@@ -63,69 +64,92 @@ object frmWeddingSchedule: TfrmWeddingSchedule
     object RowDetailData: TRowDetailPanelControlEh
     end
   end
-  object dbdtRegTime: TDBDateTimeEditEh
-    Left = 160
-    Top = 8
-    Width = 73
-    Height = 24
-    ControlLabel.Width = 113
-    ControlLabel.Height = 16
-    ControlLabel.Caption = #1042#1088#1077#1084#1103' '#1088#1077#1075#1080#1089#1090#1088#1072#1094#1080#1080
-    ControlLabel.Visible = True
-    ControlLabelLocation.Spacing = 10
-    ControlLabelLocation.Position = lpLeftCenterEh
-    DynProps = <>
-    EditButtons = <>
-    Kind = dtkTimeEh
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 660
+    Height = 72
+    Align = alTop
+    BevelOuter = bvNone
     TabOrder = 1
-    Visible = True
-  end
-  object dbdtRegDate: TDBDateTimeEditEh
-    Left = 392
-    Top = 8
-    Width = 119
-    Height = 24
-    ControlLabel.Width = 106
-    ControlLabel.Height = 16
-    ControlLabel.Caption = #1044#1072#1090#1072' '#1088#1077#1075#1080#1089#1090#1088#1072#1094#1080#1080
-    ControlLabel.Font.Charset = DEFAULT_CHARSET
-    ControlLabel.Font.Color = clWindowText
-    ControlLabel.Font.Height = -13
-    ControlLabel.Font.Name = 'Tahoma'
-    ControlLabel.Font.Style = []
-    ControlLabel.ParentFont = False
-    ControlLabel.Visible = True
-    ControlLabelLocation.Spacing = 10
-    ControlLabelLocation.Position = lpLeftCenterEh
-    DynProps = <>
-    EditButtons = <>
-    Kind = dtkTimeEh
-    TabOrder = 2
-    Visible = True
-  end
-  object dbeFIO: TDBEditEh
-    Left = 160
-    Top = 46
-    Width = 351
-    Height = 24
-    ControlLabel.Width = 143
-    ControlLabel.Height = 16
-    ControlLabel.Caption = #1060#1048#1054' '#1088#1077#1075#1080#1089#1090#1088#1080#1088#1091#1102#1097#1080#1093#1089#1103
-    ControlLabel.Visible = True
-    ControlLabelLocation.Position = lpLeftCenterEh
-    DynProps = <>
-    EditButtons = <>
-    TabOrder = 3
-    Visible = True
-  end
-  object btnSearch: TButton
-    Left = 536
-    Top = 46
-    Width = 75
-    Height = 25
-    Caption = #1055#1086#1080#1089#1082
-    TabOrder = 4
-    OnClick = btnSearchClick
+    ExplicitTop = -6
+    object btnSearch: TButton
+      Left = 536
+      Top = 38
+      Width = 74
+      Height = 25
+      Caption = #1055#1086#1080#1089#1082
+      TabOrder = 0
+      OnClick = btnSearchClick
+    end
+    object dbeFIO: TDBEditEh
+      Left = 160
+      Top = 38
+      Width = 350
+      Height = 24
+      ControlLabel.Width = 143
+      ControlLabel.Height = 16
+      ControlLabel.Caption = #1060#1048#1054' '#1088#1077#1075#1080#1089#1090#1088#1080#1088#1091#1102#1097#1080#1093#1089#1103
+      ControlLabel.Font.Charset = DEFAULT_CHARSET
+      ControlLabel.Font.Color = clWindowText
+      ControlLabel.Font.Height = -13
+      ControlLabel.Font.Name = 'Tahoma'
+      ControlLabel.Font.Style = []
+      ControlLabel.ParentFont = False
+      ControlLabel.Visible = True
+      ControlLabelLocation.Position = lpLeftCenterEh
+      DynProps = <>
+      EditButtons = <>
+      TabOrder = 1
+      Visible = True
+    end
+    object dbdtRegDate: TDBDateTimeEditEh
+      Left = 394
+      Top = 8
+      Width = 116
+      Height = 24
+      ControlLabel.Width = 106
+      ControlLabel.Height = 16
+      ControlLabel.Caption = #1044#1072#1090#1072' '#1088#1077#1075#1080#1089#1090#1088#1072#1094#1080#1080
+      ControlLabel.Font.Charset = DEFAULT_CHARSET
+      ControlLabel.Font.Color = clWindowText
+      ControlLabel.Font.Height = -13
+      ControlLabel.Font.Name = 'Tahoma'
+      ControlLabel.Font.Style = []
+      ControlLabel.ParentFont = False
+      ControlLabel.Visible = True
+      ControlLabelLocation.Spacing = 10
+      ControlLabelLocation.Position = lpLeftCenterEh
+      DynProps = <>
+      EditButtons = <>
+      Kind = dtkDateEh
+      TabOrder = 2
+      Visible = True
+    end
+    object dbdtRegTime: TDBDateTimeEditEh
+      Left = 160
+      Top = 8
+      Width = 49
+      Height = 24
+      ControlLabel.Width = 113
+      ControlLabel.Height = 16
+      ControlLabel.Caption = #1042#1088#1077#1084#1103' '#1088#1077#1075#1080#1089#1090#1088#1072#1094#1080#1080
+      ControlLabel.Font.Charset = DEFAULT_CHARSET
+      ControlLabel.Font.Color = clWindowText
+      ControlLabel.Font.Height = -13
+      ControlLabel.Font.Name = 'Tahoma'
+      ControlLabel.Font.Style = []
+      ControlLabel.ParentFont = False
+      ControlLabel.Visible = True
+      ControlLabelLocation.Spacing = 10
+      ControlLabelLocation.Position = lpLeftCenterEh
+      DynProps = <>
+      EditButton.Visible = False
+      EditButtons = <>
+      TabOrder = 3
+      Visible = True
+      EditFormat = 'HH:NN'
+    end
   end
   object dsWedding: TDataSource
     DataSet = dataWeddings
@@ -153,35 +177,52 @@ object frmWeddingSchedule: TfrmWeddingSchedule
       'Y_DATE AS TIME) AS ceremony_time'#13#10'        FROM   wedding w'#13#10'    ' +
       '           JOIN PERSONS p_man ON w.MAN_ID = p_man.PERSON_ID'#13#10'   ' +
       '            JOIN PERSONS p_woman ON w.WOMAN_ID = p_woman.PERSON_' +
-      'ID) t'#13#10'where  (t.m_name like :filter_fio or t.w_name like :filte' +
-      'r_fio or :filter_fio is null) AND (t.ceremony_time_str = :time_f' +
-      'ilter or'#13#10'       :time_filter'#13#10'         is null) AND (t.CEREMONY' +
-      '_DATE = :ceremony_date or :ceremony_date is null)'
+      'ID) t'#13#10'where  (lower(t.m_name) like '#39'%'#39' + lower(:filter_fio1) + ' +
+      #39'%'#39' or'#13#10'        lower(t.w_name) like '#39'%'#39' + lower(:filter_fio2) +' +
+      ' '#39'%'#39' or'#13#10'        :filter_fio3 is null) '#13#10'        AND (t.ceremony' +
+      '_time_str = :time_filter1 or :time_filter2 is null) '#13#10'        AN' +
+      'D (t.CEREMONY_DATE = :ceremony_date1 or :ceremony_date2 is null)'
     Parameters = <
       item
-        Name = 'filter_fio'
-        Attributes = [paNullable]
+        Name = 'filter_fio1'
         DataType = ftString
-        NumericScale = 255
-        Precision = 255
-        Size = 156
+        Size = -1
         Value = Null
       end
       item
-        Name = 'time_filter'
-        Attributes = [paNullable]
+        Name = 'filter_fio2'
         DataType = ftString
-        NumericScale = 255
-        Precision = 255
-        Size = 5
+        Size = -1
         Value = Null
       end
       item
-        Name = 'ceremony_date'
-        Attributes = [paNullable]
+        Name = 'filter_fio3'
+        DataType = ftString
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'time_filter1'
+        DataType = ftString
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'time_filter2'
+        DataType = ftString
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'ceremony_date1'
         DataType = ftDateTime
-        Precision = 10
-        Size = 6
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'ceremony_date2'
+        DataType = ftDateTime
+        Size = -1
         Value = Null
       end>
     Left = 463

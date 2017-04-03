@@ -1,7 +1,6 @@
 object frmMain: TfrmMain
   Left = 0
   Top = 0
-  ActiveControl = dbgWedding
   Caption = 'frmMain'
   ClientHeight = 708
   ClientWidth = 912
@@ -22,17 +21,13 @@ object frmMain: TfrmMain
     Top = 143
     Width = 912
     Height = 565
-    ActivePage = tsWedding
+    ActivePage = tsSearch
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 747
-    ExplicitHeight = 515
     object tsMain: TTabSheet
       Caption = 'tsMain'
       ImageIndex = 4
       TabVisible = False
-      ExplicitWidth = 739
-      ExplicitHeight = 505
       object Image1: TImage
         Left = 0
         Top = 0
@@ -2643,8 +2638,6 @@ object frmMain: TfrmMain
     object tsWedding: TTabSheet
       Caption = #1041#1088#1072#1082#1086#1089#1086#1095#1077#1090#1072#1085#1080#1103
       TabVisible = False
-      ExplicitWidth = 739
-      ExplicitHeight = 505
       object dbgWedding: TDBGridEh
         Left = 0
         Top = 0
@@ -2732,8 +2725,6 @@ object frmMain: TfrmMain
       Caption = #1057#1084#1077#1088#1090#1080
       ImageIndex = 1
       TabVisible = False
-      ExplicitWidth = 739
-      ExplicitHeight = 505
       object dbgDeath: TDBGridEh
         Left = 0
         Top = 0
@@ -2814,8 +2805,6 @@ object frmMain: TfrmMain
       Caption = #1056#1086#1078#1076#1077#1085#1080#1103
       ImageIndex = 2
       TabVisible = False
-      ExplicitWidth = 739
-      ExplicitHeight = 505
       object DBGridEh1: TDBGridEh
         Left = 0
         Top = 0
@@ -2910,8 +2899,6 @@ object frmMain: TfrmMain
       Caption = #1054#1090#1095#1077#1090' '#1086' '#1088#1072#1073#1086#1090#1077' '#1079#1072#1075#1089#1072' '#1087#1086' '#1075#1086#1076#1072#1084
       ImageIndex = 3
       TabVisible = False
-      ExplicitWidth = 739
-      ExplicitHeight = 505
       object DBGridEh2: TDBGridEh
         Left = 0
         Top = 0
@@ -2990,6 +2977,85 @@ object frmMain: TfrmMain
         end
       end
     end
+    object tsSearch: TTabSheet
+      Caption = 'tsSearch'
+      ImageIndex = 5
+      TabVisible = False
+      object dbgSearchResults: TDBGridEh
+        Left = 0
+        Top = 31
+        Width = 904
+        Height = 524
+        Align = alClient
+        DataSource = dsSearch
+        DynProps = <>
+        IndicatorOptions = [gioShowRowIndicatorEh]
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
+        TabOrder = 0
+        OnDblClick = dbgSearchResultsDblClick
+        Columns = <
+          item
+            DynProps = <>
+            EditButtons = <>
+            FieldName = 'WHAT'
+            Footers = <>
+          end
+          item
+            DynProps = <>
+            EditButtons = <>
+            FieldName = 'DATE_REG'
+            Footers = <>
+            Width = 133
+          end>
+        object RowDetailData: TRowDetailPanelControlEh
+        end
+      end
+      object Panel1: TPanel
+        Left = 0
+        Top = 0
+        Width = 904
+        Height = 31
+        Align = alTop
+        BevelOuter = bvNone
+        TabOrder = 1
+        object Label1: TLabel
+          Left = 9
+          Top = 5
+          Width = 289
+          Height = 14
+          Caption = #1042#1074#1077#1076#1080#1090#1077' '#1085#1086#1084#1077#1088' '#1072#1082#1090#1072' ('#1089#1084#1077#1088#1090#1080', '#1088#1086#1078#1076#1077#1085#1080#1103', '#1073#1088#1072#1082#1072'..) '
+        end
+        object dbeActNum: TDBEditEh
+          Left = 304
+          Top = 2
+          Width = 121
+          Height = 22
+          DynProps = <>
+          EditButtons = <>
+          TabOrder = 0
+          Visible = True
+        end
+        object Button1: TButton
+          Left = 448
+          Top = 0
+          Width = 121
+          Height = 25
+          Caption = #1055#1086#1080#1089#1082
+          TabOrder = 1
+          OnClick = Button1Click
+        end
+        object btnEdit: TButton
+          Left = 575
+          Top = 0
+          Width = 121
+          Height = 25
+          Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100
+          Enabled = False
+          TabOrder = 2
+          OnClick = btnEditClick
+        end
+      end
+    end
   end
   object Ribbon1: TRibbon
     Left = 0
@@ -3019,14 +3085,25 @@ object frmMain: TfrmMain
       item
         Caption = #1054#1073#1097#1072#1103' '#1072#1085#1072#1083#1080#1090#1080#1082#1072
         Page = RibbonPage1
+      end
+      item
+        Caption = #1055#1086#1080#1089#1082' '#1087#1086' '#1085#1086#1084#1077#1088#1091' '#1072#1082#1090#1072
+        Page = RibbonPage2
       end>
-    TabIndex = 1
+    TabIndex = 4
     OnTabChange = Ribbon1TabChange
-    ExplicitWidth = 747
     DesignSize = (
       912
       143)
     StyleName = 'Ribbon - Luna'
+    object rbMain: TRibbonPage
+      Left = 0
+      Top = 50
+      Width = 911
+      Height = 93
+      Caption = #1043#1083#1072#1074#1085#1072#1103
+      Index = 0
+    end
     object rbDeath: TRibbonPage
       Left = 0
       Top = 50
@@ -3034,7 +3111,6 @@ object frmMain: TfrmMain
       Height = 93
       Caption = #1057#1084#1077#1088#1090#1080
       Index = 2
-      ExplicitWidth = 746
       object RibbonGroup3: TRibbonGroup
         Left = 4
         Top = 3
@@ -3054,50 +3130,13 @@ object frmMain: TfrmMain
         GroupIndex = 1
       end
     end
-    object rbBirth: TRibbonPage
+    object RibbonPage2: TRibbonPage
       Left = 0
       Top = 50
       Width = 911
       Height = 93
-      Caption = #1056#1086#1078#1076#1077#1085#1080#1103
-      Index = 3
-      ExplicitWidth = 746
-      object RibbonGroup5: TRibbonGroup
-        Left = 4
-        Top = 3
-        Width = 214
-        Height = 86
-        ActionManager = amMain
-        Caption = #1054#1089#1085#1086#1074#1085#1086#1077
-        GroupIndex = 0
-      end
-      object RibbonGroup6: TRibbonGroup
-        Left = 220
-        Top = 3
-        Width = 176
-        Height = 86
-        ActionManager = amMain
-        Caption = #1054#1090#1095#1077#1090#1099
-        GroupIndex = 1
-      end
-    end
-    object RibbonPage1: TRibbonPage
-      Left = 0
-      Top = 50
-      Width = 911
-      Height = 93
-      Caption = #1054#1073#1097#1072#1103' '#1072#1085#1072#1083#1080#1090#1080#1082#1072
-      Index = 4
-      ExplicitWidth = 746
-    end
-    object rbMain: TRibbonPage
-      Left = 0
-      Top = 50
-      Width = 911
-      Height = 93
-      Caption = #1043#1083#1072#1074#1085#1072#1103
-      Index = 0
-      ExplicitWidth = 746
+      Caption = #1055#1086#1080#1089#1082' '#1087#1086' '#1085#1086#1084#1077#1088#1091' '#1072#1082#1090#1072
+      Index = 5
     end
     object rbWedding: TRibbonPage
       Left = 0
@@ -3106,7 +3145,6 @@ object frmMain: TfrmMain
       Height = 93
       Caption = #1041#1088#1072#1082#1086#1089#1086#1095#1077#1090#1072#1085#1080#1103
       Index = 1
-      ExplicitWidth = 746
       object RibbonGroup1: TRibbonGroup
         Left = 4
         Top = 3
@@ -3137,11 +3175,54 @@ object frmMain: TfrmMain
       object RibbonGroup8: TRibbonGroup
         Left = 509
         Top = 3
-        Width = 100
+        Width = 126
         Height = 86
         ActionManager = amMain
         Caption = #1056#1072#1089#1087#1080#1089#1072#1085#1080#1077
         GroupIndex = 3
+      end
+    end
+    object rbBirth: TRibbonPage
+      Left = 0
+      Top = 50
+      Width = 911
+      Height = 93
+      Caption = #1056#1086#1078#1076#1077#1085#1080#1103
+      Index = 3
+      object RibbonGroup5: TRibbonGroup
+        Left = 4
+        Top = 3
+        Width = 214
+        Height = 86
+        ActionManager = amMain
+        Caption = #1054#1089#1085#1086#1074#1085#1086#1077
+        GroupIndex = 0
+      end
+      object RibbonGroup6: TRibbonGroup
+        Left = 220
+        Top = 3
+        Width = 176
+        Height = 86
+        ActionManager = amMain
+        Caption = #1054#1090#1095#1077#1090#1099
+        GroupIndex = 1
+      end
+    end
+    object RibbonPage1: TRibbonPage
+      Left = 0
+      Top = 50
+      Width = 911
+      Height = 93
+      Caption = #1054#1073#1097#1072#1103' '#1072#1085#1072#1083#1080#1090#1080#1082#1072
+      Index = 4
+      object RibbonGroup9: TRibbonGroup
+        Left = 4
+        Top = 3
+        Width = 152
+        Height = 86
+        ActionManager = amMain
+        Caption = #1054#1090#1095#1077#1090#1099
+        GroupIndex = 0
       end
     end
   end
@@ -3237,6 +3318,35 @@ object frmMain: TfrmMain
             Action = actRevertCancelWedding
           end>
         ActionBar = RibbonGroup7
+      end
+      item
+        Items = <
+          item
+            Action = actSchedule
+          end>
+        ActionBar = RibbonGroup8
+      end
+      item
+        Items = <
+          item
+            Caption = '&RibbonSpinEdit1'
+            CommandStyle = csControl
+            CommandProperties.Width = 150
+            CommandProperties.ContainedControl = dbgSearchResults.RowDetailData
+          end>
+      end
+      item
+        Items = <
+          item
+            Action = actPrintBirthCons
+          end
+          item
+            Action = actPrintWeddingCons
+          end
+          item
+            Action = actRegDeath
+          end>
+        ActionBar = RibbonGroup9
       end>
     Left = 816
     Top = 208
@@ -3304,6 +3414,18 @@ object frmMain: TfrmMain
     object actSchedule: TAction
       Caption = #1056#1072#1089#1087#1080#1089#1072#1085#1080#1077' '#1089#1074#1072#1076#1077#1073
       OnExecute = actScheduleExecute
+    end
+    object actPrintWeddingCons: TAction
+      Caption = #1056#1077#1075#1080#1089#1090#1088#1072#1094#1080#1103' '#1073#1088#1072#1082#1086#1074
+      OnExecute = actPrintWeddingConsExecute
+    end
+    object actPrintBirthCons: TAction
+      Caption = #1056#1077#1075#1080#1089#1090#1088#1072#1094#1080#1103' '#1088#1086#1078#1076#1077#1085#1080#1081
+      OnExecute = actPrintBirthConsExecute
+    end
+    object actRegDeath: TAction
+      Caption = #1056#1077#1075#1080#1089#1090#1088#1072#1094#1080#1103' '#1089#1084#1077#1088#1090#1077#1081
+      OnExecute = actRegDeathExecute
     end
   end
   object dsWedding: TDataSource
@@ -3634,14 +3756,93 @@ object frmMain: TfrmMain
         DataType = ftInteger
         Direction = pdReturnValue
         Precision = 10
+        Value = Null
       end
       item
         Name = '@wedding_id'
         Attributes = [paNullable]
         DataType = ftInteger
         Precision = 10
+        Value = Null
       end>
     Left = 224
     Top = 512
+  end
+  object dataSearch: TADODataSet
+    Connection = dmMain.connMain
+    CursorType = ctStatic
+    AfterOpen = dataSearchAfterOpen
+    CommandText = 
+      #13#10'select w.DATE_REG,'#13#10'       N'#39#1056#1077#1075#1080#1089#1090#1088#1072#1094#1080#1103' '#1073#1088#1072#1082#1072#39' as WHAT,'#13#10'    ' +
+      '   1 as WHAT_TYPE,'#13#10'       w.WEDDING_ID as ID'#13#10'from WEDDING w'#13#10'w' +
+      'here w.ACT_NUM = :act_num1'#13#10'UNION ALL'#13#10'select b.REG_DATE,'#13#10'     ' +
+      '  N'#39#1057#1074#1080#1076#1077#1090#1077#1083#1100#1089#1090#1074#1086' '#1086' '#1088#1086#1078#1076#1077#1085#1080#1080#39' as WHAT,'#13#10'       2 as WHAT_TYPE,'#13#10 +
+      '       b.BIRTH_ID'#13#10'FROM BIRTH b'#13#10'where b.ACT_NUM = :act_num2'#13#10'UN' +
+      'ION ALL'#13#10'select d.REG_DATE,'#13#10'        N'#39#1057#1074#1080#1076#1077#1090#1077#1083#1100#1089#1090#1074#1086' '#1086' '#1089#1084#1077#1088#1090#1080#39' a' +
+      's WHAT,'#13#10'        3 as WHAT_TYPE,'#13#10'        d.DEATH_ID'#13#10'from DEATH' +
+      ' d'#13#10'where d.ACT_NUM = :act_num3'#13#10'UNION ALL'#13#10'select  w1.CANCEL_DA' +
+      'TE,'#13#10'        N'#39#1057#1074#1080#1076#1077#1090#1077#1083#1100#1089#1090#1074#1086' '#1086' '#1088#1072#1089#1090#1086#1088#1078#1077#1085#1080#1080' '#1073#1088#1072#1082#1072' '#1089#1084#1077#1088#1090#1080#39' as WHAT' +
+      ','#13#10'        4 as WHAT_TYPE,'#13#10'        w1.WEDDING_ID'#13#10'from WEDDING ' +
+      'w1'#13#10'where w1.CANCEL_NUM = :act_num4'
+    Parameters = <
+      item
+        Name = 'act_num1'
+        DataType = ftString
+        NumericScale = 255
+        Precision = 255
+        Size = 50
+        Value = Null
+      end
+      item
+        Name = 'act_num2'
+        DataType = ftString
+        NumericScale = 255
+        Precision = 255
+        Size = 50
+        Value = Null
+      end
+      item
+        Name = 'act_num3'
+        DataType = ftString
+        NumericScale = 255
+        Precision = 255
+        Size = 10
+        Value = Null
+      end
+      item
+        Name = 'act_num4'
+        Attributes = [paNullable]
+        DataType = ftString
+        NumericScale = 255
+        Precision = 255
+        Size = 50
+        Value = Null
+      end>
+    Left = 760
+    Top = 536
+    object dataSearchDATE_REG: TDateField
+      DisplayLabel = #1044#1072#1090#1072' '#1088#1077#1075#1080#1089#1090#1088#1072#1094#1080#1080
+      FieldName = 'DATE_REG'
+      ReadOnly = True
+    end
+    object dataSearchWHAT: TWideStringField
+      DisplayLabel = #1058#1080#1087
+      FieldName = 'WHAT'
+      ReadOnly = True
+      Size = 40
+    end
+    object dataSearchWHAT_TYPE: TIntegerField
+      FieldName = 'WHAT_TYPE'
+      ReadOnly = True
+    end
+    object dataSearchID: TIntegerField
+      FieldName = 'ID'
+      ReadOnly = True
+    end
+  end
+  object dsSearch: TDataSource
+    DataSet = dataSearch
+    Left = 716
+    Top = 509
   end
 end

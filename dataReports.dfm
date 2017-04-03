@@ -1,7 +1,7 @@
 object dmReports: TdmReports
   OldCreateOrder = False
-  Height = 295
-  Width = 559
+  Height = 426
+  Width = 651
   object frxWedding: TfrxReport
     Version = '5.1.5'
     DataSet = frxdsWedding
@@ -3101,5 +3101,629 @@ object dmReports: TdmReports
     BCDToCurrency = False
     Left = 48
     Top = 224
+  end
+  object dataWeddingCons: TADOQuery
+    Connection = dmMain.connMain
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'SELECT   YEAR(w.date_reg) AS year'
+      '         , w.ACT_NUM'
+      '         , w.DATE_REG'
+      
+        '         , p_man.LAST_NAME + CASE WHEN p_man.LAST_NAME <> p_man.' +
+        'PREV_LAST_NAME THEN '#39'('#39' + p_man.PREV_LAST_NAME + '#39')'#39' ELSE '#39#39' END' +
+        ' + '#39' '#39' + LEFT(p_man.FIRST_NAME, 1) + '#39' '#39' + left(ISNULL(p_man.MID' +
+        'DLE_NAME, '#39#39'), 1) AS m_name'
+      
+        '         , p_woman.LAST_NAME + CASE WHEN p_woman.LAST_NAME <> p_' +
+        'woman.PREV_LAST_NAME THEN '#39'('#39' + p_woman.PREV_LAST_NAME + '#39')'#39' ELS' +
+        'E '#39#39' END + '#39' '#39' + LEFT(p_woman.FIRST_NAME, 1) + '#39' '#39' + left(ISNULL' +
+        '(p_woman.MIDDLE_NAME, '#39#39'), 1) AS w_name'
+      '         , w.CANCEL_NUM,'
+      '         w.CANCEL_DATE,'
+      
+        '         CASE WHEN ISNULL(w.CANCEL_NUM, '#39#39') = '#39#39' THEN 0 ELSE 1 E' +
+        'ND AS IS_CANCEL'
+      'FROM     wedding w'
+      '         JOIN PERSONS p_man ON w.MAN_ID = p_man.PERSON_ID'
+      '         JOIN PERSONS p_woman ON w.WOMAN_ID = p_woman.PERSON_ID'
+      'ORDER BY w.date_reg desc')
+    Left = 456
+    Top = 184
+  end
+  object frxdsWeddingCons: TfrxDBDataset
+    UserName = 'frxdsWeddingCons'
+    CloseDataSource = False
+    DataSet = dataWeddingCons
+    BCDToCurrency = False
+    Left = 336
+    Top = 240
+  end
+  object frxWeddingCons: TfrxReport
+    Version = '5.1.5'
+    DotMatrixReport = False
+    IniFile = '\Software\Fast Reports'
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PrintOptions.Printer = 'Default'
+    PrintOptions.PrintOnSheet = 0
+    ReportOptions.CreateDate = 42829.000077881940000000
+    ReportOptions.LastChange = 42829.023883599540000000
+    ScriptLanguage = 'PascalScript'
+    ScriptText.Strings = (
+      'begin'
+      ''
+      'end.')
+    Left = 320
+    Top = 184
+    Datasets = <
+      item
+        DataSet = frxdsWeddingCons
+        DataSetName = 'frxdsWeddingCons'
+      end>
+    Variables = <>
+    Style = <>
+    object Data: TfrxDataPage
+      Height = 1000.000000000000000000
+      Width = 1000.000000000000000000
+    end
+    object Page1: TfrxReportPage
+      PaperWidth = 210.000000000000000000
+      PaperHeight = 297.000000000000000000
+      PaperSize = 9
+      LeftMargin = 10.000000000000000000
+      RightMargin = 10.000000000000000000
+      TopMargin = 10.000000000000000000
+      BottomMargin = 10.000000000000000000
+      object MasterData1: TfrxMasterData
+        FillType = ftBrush
+        Height = 26.456710000000000000
+        Top = 204.094620000000000000
+        Width = 718.110700000000000000
+        DataSet = frxdsWeddingCons
+        DataSetName = 'frxdsWeddingCons'
+        RowCount = 0
+        object frxdsWeddingConsACT_NUM: TfrxMemoView
+          Left = 7.559060000000000000
+          Top = 3.779530000000000000
+          Width = 158.740260000000000000
+          Height = 18.897650000000000000
+          DataField = 'ACT_NUM'
+          DataSet = frxdsWeddingCons
+          DataSetName = 'frxdsWeddingCons'
+          Memo.UTF8W = (
+            '[frxdsWeddingCons."ACT_NUM"]')
+        end
+        object Memo3: TfrxMemoView
+          Left = 173.858380000000000000
+          Top = 3.779530000000000000
+          Width = 128.504020000000000000
+          Height = 18.897650000000000000
+          DataField = 'DATE_REG'
+          DataSet = frxdsWeddingCons
+          DataSetName = 'frxdsWeddingCons'
+          Memo.UTF8W = (
+            '[frxdsWeddingCons."DATE_REG"]')
+        end
+        object Memo5: TfrxMemoView
+          Left = 309.921460000000000000
+          Top = 3.779530000000000000
+          Width = 192.756030000000000000
+          Height = 18.897650000000000000
+          DataField = 'm_name'
+          DataSet = frxdsWeddingCons
+          DataSetName = 'frxdsWeddingCons'
+          Memo.UTF8W = (
+            '[frxdsWeddingCons."m_name"]')
+        end
+        object Memo7: TfrxMemoView
+          Left = 514.016080000000000000
+          Top = 3.779530000000000000
+          Width = 192.756030000000000000
+          Height = 18.897650000000000000
+          DataField = 'w_name'
+          DataSet = frxdsWeddingCons
+          DataSetName = 'frxdsWeddingCons'
+          Memo.UTF8W = (
+            '[frxdsWeddingCons."w_name"]')
+        end
+      end
+      object GroupHeader1: TfrxGroupHeader
+        FillType = ftBrush
+        Height = 56.692950000000000000
+        Top = 124.724490000000000000
+        Width = 718.110700000000000000
+        Condition = 'frxdsWeddingCons."year"'
+        object frxdsWeddingConsyear: TfrxMemoView
+          Left = 315.590755000000000000
+          Top = 2.559060000000000000
+          Width = 79.370130000000000000
+          Height = 18.897650000000000000
+          DataField = 'year'
+          DataSet = frxdsWeddingCons
+          DataSetName = 'frxdsWeddingCons'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -19
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            '[frxdsWeddingCons."year"]')
+          ParentFont = False
+        end
+        object Memo2: TfrxMemoView
+          Left = 7.559060000000000000
+          Top = 35.456710000000000000
+          Width = 158.740260000000000000
+          Height = 15.118120000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            #1053#1086#1084#1077#1088' '#1072#1082#1090#1072)
+          ParentFont = False
+        end
+        object Memo4: TfrxMemoView
+          Left = 173.858380000000000000
+          Top = 35.456710000000000000
+          Width = 128.504020000000000000
+          Height = 15.118120000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            #1044#1072#1090#1072' '#1088#1077#1075#1080#1089#1090#1088#1072#1094#1080#1080)
+          ParentFont = False
+        end
+        object Memo6: TfrxMemoView
+          Left = 309.921460000000000000
+          Top = 35.456710000000000000
+          Width = 192.756030000000000000
+          Height = 15.118120000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            #1046#1077#1085#1080#1093)
+          ParentFont = False
+        end
+        object Memo8: TfrxMemoView
+          Left = 514.016080000000000000
+          Top = 35.456710000000000000
+          Width = 192.756030000000000000
+          Height = 15.118120000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            #1053#1077#1074#1077#1089#1090#1072)
+          ParentFont = False
+        end
+      end
+      object ReportTitle1: TfrxReportTitle
+        FillType = ftBrush
+        Height = 45.354360000000000000
+        Top = 18.897650000000000000
+        Width = 718.110700000000000000
+        object Memo1: TfrxMemoView
+          Left = 128.504020000000000000
+          Top = 7.559060000000000000
+          Width = 461.102660000000000000
+          Height = 34.015770000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -21
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            #1054#1090#1095#1077#1090' '#1087#1086' '#1088#1077#1075#1080#1089#1090#1088#1072#1094#1080#1103#1084' '#1073#1088#1072#1082#1086#1074' '#1087#1086' '#1075#1086#1076#1072#1084)
+          ParentFont = False
+        end
+      end
+    end
+  end
+  object dataBirthCons: TADOQuery
+    Connection = dmMain.connMain
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'SELECT'
+      '         YEAR(b.REG_DATE) AS year'
+      '         , b.ACT_NUM'
+      '         , b.REG_DATE'
+      
+        '         , p.LAST_NAME + '#39' '#39' + LEFT(p.FIRST_NAME, 1) + '#39' '#39' + lef' +
+        't(ISNULL(p.MIDDLE_NAME, '#39#39'), 1) AS fio'
+      'FROM     BIRTH b'
+      '         JOIN PERSONS p ON b.PERSON_ID = p.PERSON_ID'
+      'ORDER BY b.REG_DATE desc')
+    Left = 112
+    Top = 312
+  end
+  object frxdsBirthCons: TfrxDBDataset
+    UserName = 'frxdsBirthCons'
+    CloseDataSource = False
+    DataSet = dataBirthCons
+    BCDToCurrency = False
+    Left = 56
+    Top = 360
+  end
+  object frxBirthCons: TfrxReport
+    Version = '5.1.5'
+    DotMatrixReport = False
+    IniFile = '\Software\Fast Reports'
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PrintOptions.Printer = 'Default'
+    PrintOptions.PrintOnSheet = 0
+    ReportOptions.CreateDate = 42829.000077881940000000
+    ReportOptions.LastChange = 42829.032569004630000000
+    ScriptLanguage = 'PascalScript'
+    ScriptText.Strings = (
+      'begin'
+      ''
+      'end.')
+    Left = 48
+    Top = 304
+    Datasets = <
+      item
+        DataSet = frxdsBirthCons
+        DataSetName = 'frxdsBirthCons'
+      end>
+    Variables = <>
+    Style = <>
+    object Data: TfrxDataPage
+      Height = 1000.000000000000000000
+      Width = 1000.000000000000000000
+    end
+    object Page1: TfrxReportPage
+      PaperWidth = 210.000000000000000000
+      PaperHeight = 297.000000000000000000
+      PaperSize = 9
+      LeftMargin = 10.000000000000000000
+      RightMargin = 10.000000000000000000
+      TopMargin = 10.000000000000000000
+      BottomMargin = 10.000000000000000000
+      object MasterData1: TfrxMasterData
+        FillType = ftBrush
+        Height = 26.456710000000000000
+        Top = 204.094620000000000000
+        Width = 718.110700000000000000
+        DataSet = frxdsBirthCons
+        DataSetName = 'frxdsBirthCons'
+        RowCount = 0
+        object frxdsWeddingConsACT_NUM: TfrxMemoView
+          Left = 7.559060000000000000
+          Top = 3.779530000000000000
+          Width = 158.740260000000000000
+          Height = 18.897650000000000000
+          DataField = 'ACT_NUM'
+          DataSet = frxdsBirthCons
+          DataSetName = 'frxdsBirthCons'
+          Memo.UTF8W = (
+            '[frxdsBirthCons."ACT_NUM"]')
+        end
+        object Memo3: TfrxMemoView
+          Left = 173.858380000000000000
+          Top = 3.779530000000000000
+          Width = 128.504020000000000000
+          Height = 18.897650000000000000
+          DataField = 'REG_DATE'
+          DataSet = frxdsBirthCons
+          DataSetName = 'frxdsBirthCons'
+          Memo.UTF8W = (
+            '[frxdsBirthCons."REG_DATE"]')
+        end
+        object Memo5: TfrxMemoView
+          Left = 309.921460000000000000
+          Top = 3.779530000000000000
+          Width = 396.850650000000000000
+          Height = 18.897650000000000000
+          DataField = 'fio'
+          DataSet = frxdsBirthCons
+          DataSetName = 'frxdsBirthCons'
+          Memo.UTF8W = (
+            '[frxdsBirthCons."fio"]')
+        end
+      end
+      object GroupHeader1: TfrxGroupHeader
+        FillType = ftBrush
+        Height = 56.692950000000000000
+        Top = 124.724490000000000000
+        Width = 718.110700000000000000
+        Condition = 'frxdsBirthCons."year"'
+        object frxdsWeddingConsyear: TfrxMemoView
+          Left = 315.590755000000000000
+          Top = 2.559060000000000000
+          Width = 79.370130000000000000
+          Height = 18.897650000000000000
+          DataField = 'year'
+          DataSet = frxdsBirthCons
+          DataSetName = 'frxdsBirthCons'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -19
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            '[frxdsBirthCons."year"]')
+          ParentFont = False
+        end
+        object Memo2: TfrxMemoView
+          Left = 7.559060000000000000
+          Top = 35.456710000000000000
+          Width = 158.740260000000000000
+          Height = 15.118120000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            #1053#1086#1084#1077#1088' '#1072#1082#1090#1072)
+          ParentFont = False
+        end
+        object Memo4: TfrxMemoView
+          Left = 173.858380000000000000
+          Top = 35.456710000000000000
+          Width = 128.504020000000000000
+          Height = 15.118120000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            #1044#1072#1090#1072' '#1088#1077#1075#1080#1089#1090#1088#1072#1094#1080#1080)
+          ParentFont = False
+        end
+        object Memo6: TfrxMemoView
+          Left = 309.921460000000000000
+          Top = 35.456710000000000000
+          Width = 396.850650000000000000
+          Height = 15.118120000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Memo.UTF8W = (
+            #1060#1048#1054' '#1088#1077#1073#1077#1085#1082#1072)
+          ParentFont = False
+        end
+      end
+      object ReportTitle1: TfrxReportTitle
+        FillType = ftBrush
+        Height = 45.354360000000000000
+        Top = 18.897650000000000000
+        Width = 718.110700000000000000
+        object Memo1: TfrxMemoView
+          Left = 128.504020000000000000
+          Top = 7.559060000000000000
+          Width = 461.102660000000000000
+          Height = 34.015770000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -21
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            #1054#1090#1095#1077#1090' '#1087#1086' '#1088#1077#1075#1080#1089#1090#1088#1072#1094#1080#1103#1084' '#1073#1088#1072#1082#1086#1074' '#1087#1086' '#1075#1086#1076#1072#1084)
+          ParentFont = False
+        end
+      end
+    end
+  end
+  object dataDeathCons: TADOQuery
+    Connection = dmMain.connMain
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'SELECT'
+      '         YEAR(b.REG_DATE) AS year'
+      '         , b.ACT_NUM'
+      '         , b.REG_DATE'
+      
+        '         , p.LAST_NAME + '#39' '#39' + LEFT(p.FIRST_NAME, 1) + '#39' '#39' + lef' +
+        't(ISNULL(p.MIDDLE_NAME, '#39#39'), 1) AS fio'
+      'FROM     BIRTH b'
+      '         JOIN PERSONS p ON b.PERSON_ID = p.PERSON_ID'
+      'ORDER BY b.REG_DATE desc')
+    Left = 400
+    Top = 328
+  end
+  object frxdsDeathCons: TfrxDBDataset
+    UserName = 'frxdsDeathCons'
+    CloseDataSource = False
+    DataSet = dataDeathCons
+    BCDToCurrency = False
+    Left = 344
+    Top = 376
+  end
+  object frxDeathCons: TfrxReport
+    Version = '5.1.5'
+    DotMatrixReport = False
+    IniFile = '\Software\Fast Reports'
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PrintOptions.Printer = 'Default'
+    PrintOptions.PrintOnSheet = 0
+    ReportOptions.CreateDate = 42829.000077881940000000
+    ReportOptions.LastChange = 42829.038712303240000000
+    ScriptLanguage = 'PascalScript'
+    ScriptText.Strings = (
+      'begin'
+      ''
+      'end.')
+    Left = 336
+    Top = 320
+    Datasets = <
+      item
+        DataSet = frxdsDeathCons
+        DataSetName = 'frxdsDeathCons'
+      end>
+    Variables = <>
+    Style = <>
+    object Data: TfrxDataPage
+      Height = 1000.000000000000000000
+      Width = 1000.000000000000000000
+    end
+    object Page1: TfrxReportPage
+      PaperWidth = 210.000000000000000000
+      PaperHeight = 297.000000000000000000
+      PaperSize = 9
+      LeftMargin = 10.000000000000000000
+      RightMargin = 10.000000000000000000
+      TopMargin = 10.000000000000000000
+      BottomMargin = 10.000000000000000000
+      object MasterData1: TfrxMasterData
+        FillType = ftBrush
+        Height = 26.456710000000000000
+        Top = 204.094620000000000000
+        Width = 718.110700000000000000
+        DataSet = frxdsDeathCons
+        DataSetName = 'frxdsDeathCons'
+        RowCount = 0
+        object frxdsWeddingConsACT_NUM: TfrxMemoView
+          Left = 7.559060000000000000
+          Top = 3.779530000000000000
+          Width = 158.740260000000000000
+          Height = 18.897650000000000000
+          DataField = 'ACT_NUM'
+          DataSet = frxdsDeathCons
+          DataSetName = 'frxdsDeathCons'
+          Memo.UTF8W = (
+            '[frxdsDeathCons."ACT_NUM"]')
+        end
+        object Memo3: TfrxMemoView
+          Left = 173.858380000000000000
+          Top = 3.779530000000000000
+          Width = 128.504020000000000000
+          Height = 18.897650000000000000
+          DataField = 'REG_DATE'
+          DataSet = frxdsDeathCons
+          DataSetName = 'frxdsDeathCons'
+          Memo.UTF8W = (
+            '[frxdsDeathCons."REG_DATE"]')
+        end
+        object Memo5: TfrxMemoView
+          Left = 309.921460000000000000
+          Top = 3.779530000000000000
+          Width = 396.850650000000000000
+          Height = 18.897650000000000000
+          DataField = 'fio'
+          DataSet = frxdsDeathCons
+          DataSetName = 'frxdsDeathCons'
+          Memo.UTF8W = (
+            '[frxdsDeathCons."fio"]')
+        end
+      end
+      object GroupHeader1: TfrxGroupHeader
+        FillType = ftBrush
+        Height = 56.692950000000000000
+        Top = 124.724490000000000000
+        Width = 718.110700000000000000
+        Condition = 'frxdsDeathCons."year"'
+        object frxdsWeddingConsyear: TfrxMemoView
+          Left = 315.590755000000000000
+          Top = 2.559060000000000000
+          Width = 79.370130000000000000
+          Height = 18.897650000000000000
+          DataField = 'year'
+          DataSet = frxdsDeathCons
+          DataSetName = 'frxdsDeathCons'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -19
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            '[frxdsDeathCons."year"]')
+          ParentFont = False
+        end
+        object Memo2: TfrxMemoView
+          Left = 7.559060000000000000
+          Top = 35.456710000000000000
+          Width = 158.740260000000000000
+          Height = 15.118120000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            #1053#1086#1084#1077#1088' '#1072#1082#1090#1072)
+          ParentFont = False
+        end
+        object Memo4: TfrxMemoView
+          Left = 173.858380000000000000
+          Top = 35.456710000000000000
+          Width = 128.504020000000000000
+          Height = 15.118120000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            #1044#1072#1090#1072' '#1088#1077#1075#1080#1089#1090#1088#1072#1094#1080#1080)
+          ParentFont = False
+        end
+        object Memo6: TfrxMemoView
+          Left = 309.921460000000000000
+          Top = 35.456710000000000000
+          Width = 396.850650000000000000
+          Height = 15.118120000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Memo.UTF8W = (
+            #1060#1048#1054' '#1091#1084#1077#1088#1096#1077#1075#1086)
+          ParentFont = False
+        end
+      end
+      object ReportTitle1: TfrxReportTitle
+        FillType = ftBrush
+        Height = 45.354360000000000000
+        Top = 18.897650000000000000
+        Width = 718.110700000000000000
+        object Memo1: TfrxMemoView
+          Left = 128.504020000000000000
+          Top = 7.559060000000000000
+          Width = 461.102660000000000000
+          Height = 34.015770000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -21
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            #1054#1090#1095#1077#1090' '#1087#1086' '#1088#1077#1075#1080#1089#1090#1088#1072#1094#1080#1103#1084' '#1089#1084#1077#1088#1090#1077#1081' '#1087#1086' '#1075#1086#1076#1072#1084)
+          ParentFont = False
+        end
+      end
+    end
   end
 end

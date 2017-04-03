@@ -8,7 +8,8 @@ uses
   System.Actions, Vcl.ActnList, Vcl.RibbonLunaStyleActnCtrls, Vcl.ActnMan,
   DBGridEhGrouping, ToolCtrlsEh, DBGridEhToolCtrls, DynVarsEh, EhLibVCL,
   GridsEh, DBAxisGridsEh, DBGridEh, Vcl.ToolWin, Vcl.ActnCtrls, Vcl.Ribbon,
-  Vcl.DBActns, dataMain, frxClass, Vcl.Imaging.jpeg, Vcl.ExtCtrls;
+  Vcl.DBActns, dataMain, frxClass, Vcl.Imaging.jpeg, Vcl.ExtCtrls, Vcl.StdCtrls,
+  Vcl.Mask, DBCtrlsEh;
 
 type
   TfrmMain = class(TForm)
@@ -101,6 +102,24 @@ type
     actPrintCancelWedding: TAction;
     RibbonGroup8: TRibbonGroup;
     actSchedule: TAction;
+    RibbonPage2: TRibbonPage;
+    tsSearch: TTabSheet;
+    dbgSearchResults: TDBGridEh;
+    Panel1: TPanel;
+    Label1: TLabel;
+    dbeActNum: TDBEditEh;
+    Button1: TButton;
+    dataSearch: TADODataSet;
+    dsSearch: TDataSource;
+    dataSearchDATE_REG: TDateField;
+    dataSearchWHAT: TWideStringField;
+    dataSearchWHAT_TYPE: TIntegerField;
+    btnEdit: TButton;
+    dataSearchID: TIntegerField;
+    RibbonGroup9: TRibbonGroup;
+    actPrintWeddingCons: TAction;
+    actPrintBirthCons: TAction;
+    actRegDeath: TAction;
     procedure Ribbon1TabChange(Sender: TObject; const NewIndex,
       OldIndex: Integer; var AllowChange: Boolean);
     procedure actNewWeddingExecute(Sender: TObject);
@@ -126,6 +145,13 @@ type
     procedure actRevertCancelWeddingExecute(Sender: TObject);
     procedure actPrintCancelWeddingExecute(Sender: TObject);
     procedure actScheduleExecute(Sender: TObject);
+    procedure dataSearchAfterOpen(DataSet: TDataSet);
+    procedure Button1Click(Sender: TObject);
+    procedure btnEditClick(Sender: TObject);
+    procedure dbgSearchResultsDblClick(Sender: TObject);
+    procedure actPrintWeddingConsExecute(Sender: TObject);
+    procedure actPrintBirthConsExecute(Sender: TObject);
+    procedure actRegDeathExecute(Sender: TObject);
   private
     procedure RefreshData;
     procedure RefreshActions;
@@ -216,6 +242,12 @@ begin
      RefreshData;
 end;
 
+procedure TfrmMain.actPrintBirthConsExecute(Sender: TObject);
+begin
+  dmReports.dataBirthCons.Reopen;
+  dmReports.frxBirthCons.ShowReport();
+end;
+
 procedure TfrmMain.actPrintBirthExecute(Sender: TObject);
 begin
   dmReports.dataBirth.Parameters.ParamValues['birth_id'] := dataBirthBIRTH_ID.Value;
@@ -237,11 +269,23 @@ begin
   dmReports.frxDeath.ShowReport();
 end;
 
+procedure TfrmMain.actPrintWeddingConsExecute(Sender: TObject);
+begin
+  dmReports.dataWeddingCons.Reopen;
+  dmReports.frxWeddingCons.ShowReport();
+end;
+
 procedure TfrmMain.actPrintWeddingExecute(Sender: TObject);
 begin
   dmReports.dataWedding.Parameters.ParamValues['wedding_id'] := dataWeddingsWEDDING_ID.Value;
   dmReports.dataWedding.Reopen;
   dmReports.frxWedding.ShowReport();
+end;
+
+procedure TfrmMain.actRegDeathExecute(Sender: TObject);
+begin
+  dmReports.dataDeathCons.Reopen;
+  dmReports.frxDeathCons.ShowReport();
 end;
 
 procedure TfrmMain.actRevertCancelWeddingExecute(Sender: TObject);
@@ -266,6 +310,38 @@ begin
     RefreshData;
 end;
 
+procedure TfrmMain.btnEditClick(Sender: TObject);
+var
+  vResult: Boolean;
+begin
+  vResult := False;
+  if dataSearchWHAT_TYPE.Value = 1 then
+    vResult :=  TfrmEditWedding.Edit(dataSearchID.Value);
+  if dataSearchWHAT_TYPE.Value = 2 then
+    vResult :=  TfrmEditBirth.Edit(dataSearchID.Value);
+  if dataSearchWHAT_TYPE.Value = 3 then
+    vResult :=  TfrmEditDeath.Edit(dataSearchID.Value);
+  if dataSearchWHAT_TYPE.Value = 4 then
+    vResult :=  TfrmCancelWedding.Run(dataSearchID.Value);
+  if vResult then
+    RefreshData;
+end;
+
+procedure TfrmMain.Button1Click(Sender: TObject);
+begin
+  dataSearch.Close;
+  dataSearch.Parameters.ParamValues['act_num1'] := dbeActNum.Value;
+  dataSearch.Parameters.ParamValues['act_num2'] := dbeActNum.Value;
+  dataSearch.Parameters.ParamValues['act_num3'] := dbeActNum.Value;
+  dataSearch.Parameters.ParamValues['act_num4'] := dbeActNum.Value;
+  dataSearch.Open;
+end;
+
+procedure TfrmMain.dataSearchAfterOpen(DataSet: TDataSet);
+begin
+  btnEdit.Enabled := dataSearch.RecordCount > 0;
+end;
+
 procedure TfrmMain.dataWeddingsAfterOpen(DataSet: TDataSet);
 begin
   RefreshActions;
@@ -284,6 +360,11 @@ end;
 procedure TfrmMain.DBGridEh1DblClick(Sender: TObject);
 begin
   actEditBirth.Execute;
+end;
+
+procedure TfrmMain.dbgSearchResultsDblClick(Sender: TObject);
+begin
+  btnEdit.Click;
 end;
 
 procedure TfrmMain.dbgWeddingDblClick(Sender: TObject);
